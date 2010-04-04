@@ -5,4 +5,5 @@ extract_xpath:
   body: //div[@class="cmn-section cmn-indent"]
   date: //dd[@class="cmnc-publish"]/text()
 extract_after_hook: |
-  $data->{body} =~ s|<form.*?</form>||g;
+  $data->{body} =~ s{<form.*?</form>}{}g;
+  $data->{body} =~ s{<span (?:style="display: none;" class="JSID_urlData"|class="JSID_urlData" style="display: none;")>[^<]*</span>}{}g;
