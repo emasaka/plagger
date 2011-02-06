@@ -2,7 +2,7 @@ author: emasaka
 handle: http://www\.nikkei\.com/news/
 extract_xpath:
   title: //h4[@class="cmn-article_title cmn-clearfix"]/span[@class="cmnc-middle JSID_key_fonthln"]/text()
-  body: //div[@class="cmn-section cmn-indent"]
+  body: //div[@class="cmn-article_text JSID_key_fonttxt"]
   date: //dd[@class="cmnc-publish"]/text()
 extract_after_hook: |
   $data->{body} =~ s{<form.*?</form>}{}g;
