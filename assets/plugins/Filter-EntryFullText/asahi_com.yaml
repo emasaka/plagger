@@ -1,5 +1,5 @@
 # upgrade http://www3.asahi.com/rss/index.rdf or http://bulknews.net/rss/rdf.cgi?Asahi
 author: Tatsuhiko Miyagawa
 handle: http://www\.asahi\.com/
-extract: <!--#include virtual="/news/utility_right.txt"-->(.*?)<ul class="FollowLnk mb18">
+extract: <!--#include virtual="/news/utility_right3\.htm"-->(.*?)<ul class="FollowLnk mb18">
 extract_capture: body
