@@ -1,9 +1,7 @@
 author: emasaka
 handle: http://www\.nikkei\.com/news/
-extract_xpath:
-  title: //h4[@class="cmn-article_title cmn-clearfix"]/span[@class="cmnc-middle JSID_key_fonthln"]/text()
-  body: //div[@class="cmn-article_text JSID_key_fonttxt"]
-  date: //dd[@class="cmnc-publish"]/text()
+extract: <span class="cmnc-middle JSID_key_fonthln">([^<]*)</span>.*<dd class="cmnc-publish">([^<]*)</dd>.*?<div class="cmn-article_text JSID_key_fonttxt">(.*)<div class="cmn-news_flash cmn-clearfix">
+extract_capture: title date body
 extract_after_hook: |
-  $data->{body} =~ s{<form.*?</form>}{}g;
-  $data->{body} =~ s{<span (?:style="display: none;" class="JSID_urlData"|class="JSID_urlData" style="display: none;")>[^<]*</span>}{}g;
+  $data->{body} =~ s{<form.*?</form>}{}s;
+  $data->{body} =~ s{<script.*?</script>}{}s;
