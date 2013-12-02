@@ -1,8 +1,5 @@
 author: emasaka
 handle: http://www\.nikkei\.com/(?:article/|markets/\w+/\w+\.aspx\?g=)
-extract: <span class="cmnc-middle JSID_key_fonthln">([^<]*)</span>.*<dd class="cmnc-publish">([^<]*)</dd>.*?<div class="cmn-article_text JSID_key_fonttxt">(.*?)(?:<div class="cmn-pr_list">|<hr class="cmn-hide")
-extract_capture: title date body
-extract_after_hook: |
-  $data->{body} =~ s{<span style="display:none;".*?</span>}{}sg;
-  $data->{body} =~ s{<form.*?</form>}{}sg;
-  $data->{body} =~ s{<script.*?</script>}{}sg;
+extract_xpath:
+  body: //div[@class="cmn-article_text JSID_key_fonttxt"]
+  date: //dd[@class="cmnc-publish"]/text()
