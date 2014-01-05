@@ -1,0 +1,4 @@
+author: Masakazu Takahashi
+handle: http://www\.tetsudo\.com/
+extract: <!--Article Box-->(.*?)<div class="related-anchor">
+extract_capture: body
