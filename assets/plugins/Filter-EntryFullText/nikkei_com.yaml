@@ -3,3 +3,5 @@ handle: http://www\.nikkei\.com/(?:article/|markets/\w+/\w+\.aspx\?g=)
 extract_xpath:
   body: //div[@class="cmn-article_text JSID_key_fonttxt"]
   date: //dd[@class="cmnc-publish"]/text()
+extract_after_hook: |
+  $data->{body} =~ s{<span class="JSID_urlData" style="display:none;">.*?</span>}{}gs;
