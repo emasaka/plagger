@@ -2,3 +2,14 @@ author: kazeburo
 handle: http://(\w+\.watch|k-tai|www\.forest)\.impress\.co\.jp/
 extract: <!--\s?本文開始\s?-->(.*)<!--\s?本文終了\s?-->
 extract_capture: body
+extract_after_hook: |
+  if ($args->{content} =~ m{<p class="pgh-author-01">（([^）]*)）}) {
+    $data->{author} = $1;
+  } elsif ($args->{content} =~ m{<div class="author-detail"><h3 class="hdg-03"><span>(.*?)</span>}) {
+    $data->{author} = $1;
+  } elsif ($args->{content} =~ m{<div id="author-name">\s*(.*?)\s*</div>}) {
+    $data->{author} = $1;
+  } elsif ($args->{content} =~ m{<span class="author"></span>(.*?)\s+<br>}) {
+    $data->{author} = $1;
+  }
+  $data->{author} =~ s{<("[^"]*"|'[^']*'|[^'">])*>}{}g;
