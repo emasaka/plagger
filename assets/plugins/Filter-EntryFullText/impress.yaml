@@ -1,7 +1,7 @@
-author: kazeburo
+author: emasaka
 handle: http://(\w+\.watch|k-tai|www\.forest)\.impress\.co\.jp/
-extract: <!--\s?本文開始\s?-->(.*)<!--\s?本文終了\s?-->
-extract_capture: body
+extract_xpath:  
+  body: //div[contains(@class,"contents")] 
 extract_after_hook: |
   if ($args->{content} =~ m{<p class="pgh-author-01">（([^）]*)）}) {
     $data->{author} = $1;
