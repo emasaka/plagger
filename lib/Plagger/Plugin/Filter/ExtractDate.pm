@@ -34,15 +34,14 @@ sub extract {
         }
     } else {
         if (my $re = $self->conf->{extract_date}) {
-            $re = decode_utf8($re);
             $datestr =~ m/$re/ or return;
             $datestr = $&;
         }
 
         my $format = $self->conf->{extract_date_format} or return;
-        $format = (ref $format eq 'ARRAY') ?
-            [ map decode_utf8($_), @{$format} ] :
-                [ decode_utf8($format) ];
+        if (ref $format ne 'ARRAY') {
+            $format = [ $format ];
+        }
         my $date = (map { Plagger::Date->strptime($_, $datestr) } @$format)[0];
         if ($date) {
             if ($self->conf->{extract_date_timezone}) {
