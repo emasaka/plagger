@@ -1,7 +1,6 @@
 author: emasaka
-handle: http://www\.nikkei\.com/(?:article/|markets/\w+/\w+\.aspx\?g=)
+handle: https?://www\.nikkei\.com/article/\w+/
 extract_xpath:
-  body: //div[@class="cmn-article_text JSID_key_fonttxt" or @class="cmn-article_text a-cf JSID_key_fonttxt"]
+  body: //div[@itemprop="articleBody"]
   date: //dd[@class="cmnc-publish"]/text()
-extract_after_hook: |
-  $data->{body} =~ s{<span class="JSID_urlData" style="display:none;">.*?</span>}{}gs;
+extract_date_format: %Y/%m/%d %H:%M
