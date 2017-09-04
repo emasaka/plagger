@@ -1,0 +1,3 @@
+author: emasaka
+match: https?://www\.nikkei\.com/
+rewrite: s/\?.*//
