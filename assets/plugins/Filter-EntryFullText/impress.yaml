@@ -1,13 +1,10 @@
 author: emasaka
-handle: http://(?:[\w-]+\.watch|k-tai|www\.forest)\.impress\.co\.jp/
+handle: https?://(?:[\w-]+\.watch|k-tai|www\.forest)\.impress\.co\.jp/
 extract_xpath:  
   body: //div[contains(@class,"main-contents")]
   author: //ul[@class="author list"]|//p[@class="pgh-articleinfo-01"]|//p[@class="author"]
 extract_after_hook: |
   unless ($data->{author}) {
     $data->{author} = '';
-    #if ($args->{content} =~ m{<span class="author"></span>(.*?)<br>}) {
-    #  $data->{author} = $1;
-    #}
   }
   $data->{author} =~ s{<("[^"]*"|'[^']*'|[^'">])*>}{}g;
