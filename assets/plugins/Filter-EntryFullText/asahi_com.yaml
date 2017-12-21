@@ -1,5 +1,5 @@
 # upgrade http://www3.asahi.com/rss/index.rdf or http://bulknews.net/rss/rdf.cgi?Asahi
 author: Tatsuhiko Miyagawa
-handle: http://www\.asahi\.com/
+handle: https?://www\.asahi\.com/
 extract: <!-- ArticleText BGN -->(.*?)<!-- Ad BGN -->
 extract_capture: body
