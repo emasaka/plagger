@@ -1,6 +1,6 @@
 author: emasaka
 handle: https?://www\.nikkei\.com/article/\w+/
 extract_xpath:
-  body: //div[@itemprop="articleBody"]
+  body: //div[contains(@class,'cmn-article_text')]
   date: //dd[@class="cmnc-publish"]/text()
 extract_date_format: %Y/%m/%d %H:%M
